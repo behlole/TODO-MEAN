@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Add Task</h2>
+<mat-dialog-content>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="flex flex-col">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+      <mat-error *ngIf="taskForm.controls['name'].hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Description" formControlName="description">
+      <mat-error *ngIf="taskForm.controls['description'].hasError('required')">Description is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Priority" formControlName="priority">
+      <mat-error *ngIf="taskForm.controls['priority'].hasError('required')">Priority is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="dueDatePicker" placeholder="Due Date" formControlName="dueDate">
+      <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #dueDatePicker></mat-datepicker>
+      <mat-error *ngIf="taskForm.controls['dueDate'].hasError('required')">Due Date is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Status" formControlName="status">
+      <mat-error *ngIf="taskForm.controls['status'].hasError('required')">Status is required</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" [disabled]="!taskForm.valid" (click)="onSubmit()">Add</button>
+</mat-dialog-actions>

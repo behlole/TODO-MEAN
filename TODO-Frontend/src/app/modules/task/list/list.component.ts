@@ -5,6 +5,8 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatPaginator} from "@angular/material/paginator";
 import {TaskService} from "../task.service";
 import {Task} from "../typings/Task.typings";
+import {AddTaskComponent} from "../add/add.component";
+import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -28,7 +30,7 @@ export class ListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService, private dialog: MatDialog) {
     this.getTasks();
   }
 
@@ -50,5 +52,16 @@ export class ListComponent implements AfterViewInit {
     this.taskService.getTasks().subscribe((data: any) => {
       this.dataSource = new MatTableDataSource(data);
     })
+  }
+
+  openAddTaskModal() {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: '800px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getTasks()
+    });
   }
 }

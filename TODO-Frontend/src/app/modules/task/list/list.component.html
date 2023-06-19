@@ -17,7 +17,7 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search Keyword" #input>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="h-[70px] mb-2">Add Task</button>
+    <button mat-button (click)="openAddTaskModal()">Add Task</button>
   </div>
 
   <div class="mat-elevation-z8">
