@@ -3,12 +3,14 @@ const dotenv = require('dotenv');
 dotenv.config()
 const mainRouter = require("./routes");
 const mongoose = require("./utils/db_config");
+const cors = require("cors");
+
 const {sendErrorMessage} = require("./utils/sendFormattedResponses");
 
 const app = express();
 
 app.use(express.json());
-
+app.use(cors())
 
 /**
  * Importing Main Router

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -13,7 +15,9 @@ import {MatSortModule} from "@angular/material/sort";
   imports: [
     CommonModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule
   ]
 })
 export class TaskModule { }
